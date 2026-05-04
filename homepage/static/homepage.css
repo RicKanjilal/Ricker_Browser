@@ -1,0 +1,302 @@
+/* ========================================================================
+   Ricker dashboard homepage
+   Modern dark theme with floating gradient orbs, glass-morphism touches,
+   designed to match the PyQt5 chrome aesthetic.
+   ======================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #0a0b0f;
+    --surface: #13151b;
+    --surface-hi: #1c1e26;
+    --border: #262830;
+    --text: #e6e8ed;
+    --text-dim: #8b8f99;
+    --accent: #7c5cff;
+    --accent-bright: #9d83ff;
+    --danger: #ff5c8a;
+    --green: #36d399;
+
+    --font: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto,
+            Helvetica, Arial, sans-serif;
+    --mono: "SF Mono", Menlo, "Cascadia Code", "Roboto Mono", Consolas,
+            monospace;
+}
+
+html, body {
+    height: 100%;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    overflow-x: hidden;
+}
+
+/* Floating background orbs, give the page depth */
+.orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.35;
+    z-index: 0;
+    pointer-events: none;
+    animation: float 20s ease-in-out infinite;
+}
+
+.orb-1 {
+    top: -100px;
+    left: -100px;
+    width: 500px;
+    height: 500px;
+    background: var(--accent);
+}
+
+.orb-2 {
+    bottom: -150px;
+    right: -100px;
+    width: 600px;
+    height: 600px;
+    background: #ff5c8a;
+    animation-delay: -7s;
+}
+
+.orb-3 {
+    top: 40%;
+    left: 60%;
+    width: 400px;
+    height: 400px;
+    background: #36d399;
+    opacity: 0.2;
+    animation-delay: -14s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%      { transform: translate(40px, -50px) scale(1.1); }
+    66%      { transform: translate(-30px, 30px) scale(0.95); }
+}
+
+.dashboard {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 32px 40px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+.hero {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.brand {
+    font-size: 56px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    background: linear-gradient(135deg, var(--accent) 0%, #ff5c8a 50%, #36d399 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+}
+
+.greeting {
+    color: var(--text);
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.clock {
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 18px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ============================================================
+   SEARCH BLOCK
+   ============================================================ */
+.search-block {
+    margin-bottom: 60px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 4px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+.search-bar:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 4px 32px rgba(124, 92, 255, 0.25);
+    transform: translateY(-1px);
+}
+
+.search-icon {
+    color: var(--text-dim);
+    font-size: 22px;
+    padding: 0 16px;
+}
+
+#search-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 16px;
+    padding: 16px 0;
+}
+
+#search-input::placeholder {
+    color: var(--text-dim);
+}
+
+.hint {
+    font-family: var(--mono);
+    color: var(--text-dim);
+    font-size: 11px;
+    padding: 0 16px;
+    opacity: 0.6;
+}
+
+.engine-picker {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.engine-label {
+    color: var(--text-dim);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.engine-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.engine-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
+}
+
+.engine-chip:hover {
+    background: var(--surface-hi);
+    color: var(--text);
+    transform: translateY(-1px);
+}
+
+.engine-chip.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+.engine-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+/* ============================================================
+   QUICK LINKS
+   ============================================================ */
+.quick-links {
+    margin-bottom: auto;
+}
+
+.quick-links h2 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.link-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.link-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.15s ease;
+}
+
+.link-card:hover {
+    border-color: var(--accent);
+    background: var(--surface-hi);
+    transform: translateY(-2px);
+}
+
+.link-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.link-name {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.dashboard-footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 12px;
+    font-family: var(--mono);
+}
+
+.footer-separator {
+    margin: 0 12px;
+}

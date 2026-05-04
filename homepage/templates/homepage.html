@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ricker</title>
+<link rel="stylesheet" href="/static/homepage.css" />
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<main class="dashboard">
+
+  <header class="hero">
+    <h1 class="brand">Ricker</h1>
+    <p class="greeting" id="greeting">Good morning.</p>
+    <div class="clock" id="clock">--:--</div>
+  </header>
+
+  <section class="search-block">
+    <div class="search-bar">
+      <span class="search-icon">⌕</span>
+      <input
+        id="search-input"
+        type="text"
+        placeholder="Search the web..."
+        autocomplete="off"
+        autofocus
+      />
+      <span class="hint" id="hint">enter to search</span>
+    </div>
+
+    <div class="engine-picker">
+      <span class="engine-label">Search with:</span>
+      <div class="engine-list" id="engine-list"></div>
+    </div>
+  </section>
+
+  <section class="quick-links">
+    <h2>Quick Links</h2>
+    <div class="link-grid">
+      <a class="link-card" href="https://github.com" target="_blank">
+        <div class="link-dot" style="background: #181717;"></div>
+        <span class="link-name">GitHub</span>
+      </a>
+      <a class="link-card" href="https://youtube.com" target="_blank">
+        <div class="link-dot" style="background: #ff0000;"></div>
+        <span class="link-name">YouTube</span>
+      </a>
+      <a class="link-card" href="https://reddit.com" target="_blank">
+        <div class="link-dot" style="background: #ff4500;"></div>
+        <span class="link-name">Reddit</span>
+      </a>
+      <a class="link-card" href="https://twitter.com" target="_blank">
+        <div class="link-dot" style="background: #1da1f2;"></div>
+        <span class="link-name">Twitter</span>
+      </a>
+      <a class="link-card" href="https://news.ycombinator.com" target="_blank">
+        <div class="link-dot" style="background: #ff6600;"></div>
+        <span class="link-name">Hacker News</span>
+      </a>
+      <a class="link-card" href="https://wikipedia.org" target="_blank">
+        <div class="link-dot" style="background: #000000;"></div>
+        <span class="link-name">Wikipedia</span>
+      </a>
+    </div>
+  </section>
+
+  <footer class="dashboard-footer">
+    <span id="status">All systems nominal</span>
+    <span class="footer-separator">·</span>
+    <span>Powered by Ricker</span>
+  </footer>
+
+</main>
+
+<script src="/static/homepage.js"></script>
+</body>
+</html>
